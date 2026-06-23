@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const donateCancel = document.getElementById('donate-cancel');
 
     const adoptModal = document.getElementById('adopt-modal');
+    const childPhoto = document.getElementById('child-photo');
     const childName = document.getElementById('child-name');
     const childInfo = document.getElementById('child-info');
     const childCounter = document.getElementById('child-counter');
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const adoptClose = document.getElementById('adopt-close');
     const adoptCancel = document.getElementById('adopt-cancel');
 
-    // Comprehensive children list
+    // Comprehensive children list (100+ children)
     const children = [
         { name: 'Amina', age: 6, gender: 'Female' },
         { name: 'Kofi', age: 8, gender: 'Male' },
@@ -44,7 +45,98 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Sofia', age: 7, gender: 'Female' },
         { name: 'Kai', age: 8, gender: 'Male' },
         { name: 'Maya', age: 5, gender: 'Female' },
-        { name: 'Noah', age: 10, gender: 'Male' }
+        { name: 'Noah', age: 10, gender: 'Male' },
+        { name: 'Laila', age: 6, gender: 'Female' },
+        { name: 'Tariq', age: 7, gender: 'Male' },
+        { name: 'Priya', age: 8, gender: 'Female' },
+        { name: 'Arjun', age: 9, gender: 'Male' },
+        { name: 'Fatima', age: 5, gender: 'Female' },
+        { name: 'Hassan', age: 6, gender: 'Male' },
+        { name: 'Aisha', age: 7, gender: 'Female' },
+        { name: 'Soren', age: 8, gender: 'Male' },
+        { name: 'Elena', age: 6, gender: 'Female' },
+        { name: 'Lucas', age: 9, gender: 'Male' },
+        { name: 'Chioma', age: 7, gender: 'Female' },
+        { name: 'Kwasi', age: 10, gender: 'Male' },
+        { name: 'Nadia', age: 5, gender: 'Female' },
+        { name: 'Rashid', age: 8, gender: 'Male' },
+        { name: 'Leila', age: 6, gender: 'Female' },
+        { name: 'Ahmed', age: 9, gender: 'Male' },
+        { name: 'Safiya', age: 7, gender: 'Female' },
+        { name: 'Daoud', age: 5, gender: 'Male' },
+        { name: 'Amara', age: 8, gender: 'Female' },
+        { name: 'Emeka', age: 9, gender: 'Male' },
+        { name: 'Zara', age: 6, gender: 'Female' },
+        { name: 'Liam', age: 7, gender: 'Male' },
+        { name: 'Hana', age: 10, gender: 'Female' },
+        { name: 'Oliver', age: 6, gender: 'Male' },
+        { name: 'Yara', age: 5, gender: 'Female' },
+        { name: 'Adil', age: 8, gender: 'Male' },
+        { name: 'Noor', age: 7, gender: 'Female' },
+        { name: 'Malik', age: 9, gender: 'Male' },
+        { name: 'Leyla', age: 6, gender: 'Female' },
+        { name: 'Samir', age: 8, gender: 'Male' },
+        { name: 'Kaida', age: 7, gender: 'Female' },
+        { name: 'Finn', age: 10, gender: 'Male' },
+        { name: 'Zara', age: 5, gender: 'Female' },
+        { name: 'Adnan', age: 9, gender: 'Male' },
+        { name: 'Rania', age: 6, gender: 'Female' },
+        { name: 'Jaiden', age: 8, gender: 'Male' },
+        { name: 'Mira', age: 7, gender: 'Female' },
+        { name: 'Karim', age: 9, gender: 'Male' },
+        { name: 'Talia', age: 6, gender: 'Female' },
+        { name: 'Sami', age: 8, gender: 'Male' },
+        { name: 'Layla', age: 5, gender: 'Female' },
+        { name: 'Nizar', age: 10, gender: 'Male' },
+        { name: 'Yasmin', age: 7, gender: 'Female' },
+        { name: 'Aziz', age: 9, gender: 'Male' },
+        { name: 'Huda', age: 6, gender: 'Female' },
+        { name: 'Rani', age: 8, gender: 'Female' },
+        { name: 'Ravi', age: 7, gender: 'Male' },
+        { name: 'Divya', age: 9, gender: 'Female' },
+        { name: 'Aryan', age: 6, gender: 'Male' },
+        { name: 'Aditi', age: 8, gender: 'Female' },
+        { name: 'Vikram', age: 10, gender: 'Male' },
+        { name: 'Anjali', age: 5, gender: 'Female' },
+        { name: 'Rohan', age: 7, gender: 'Male' },
+        { name: 'Meera', age: 9, gender: 'Female' },
+        { name: 'Sameer', age: 6, gender: 'Male' },
+        { name: 'Pooja', age: 8, gender: 'Female' },
+        { name: 'Nikhil', age: 7, gender: 'Male' },
+        { name: 'Sakshi', age: 10, gender: 'Female' },
+        { name: 'Aditya', age: 6, gender: 'Male' },
+        { name: 'Navya', age: 5, gender: 'Female' },
+        { name: 'Karan', age: 9, gender: 'Male' },
+        { name: 'Bhavna', age: 7, gender: 'Female' },
+        { name: 'Sanjay', age: 8, gender: 'Male' },
+        { name: 'Deepa', age: 6, gender: 'Female' },
+        { name: 'Rahul', age: 10, gender: 'Male' },
+        { name: 'Shweta', age: 5, gender: 'Female' },
+        { name: 'Aman', age: 9, gender: 'Male' },
+        { name: 'Kritika', age: 8, gender: 'Female' },
+        { name: 'Arjun', age: 7, gender: 'Male' },
+        { name: 'Tanvi', age: 6, gender: 'Female' },
+        { name: 'Gaurav', age: 9, gender: 'Male' },
+        { name: 'Richa', age: 5, gender: 'Female' },
+        { name: 'Vivek', age: 10, gender: 'Male' },
+        { name: 'Simran', age: 8, gender: 'Female' },
+        { name: 'Harshit', age: 7, gender: 'Male' },
+        { name: 'Neha', age: 6, gender: 'Female' },
+        { name: 'Yash', age: 9, gender: 'Male' },
+        { name: 'Ananya', age: 8, gender: 'Female' },
+        { name: 'Arun', age: 10, gender: 'Male' },
+        { name: 'Ritika', age: 5, gender: 'Female' },
+        { name: 'Dev', age: 7, gender: 'Male' },
+        { name: 'Shruti', age: 9, gender: 'Female' },
+        { name: 'Abhishek', age: 6, gender: 'Male' },
+        { name: 'Sonya', age: 8, gender: 'Female' },
+        { name: 'Aryan', age: 9, gender: 'Male' },
+        { name: 'Disha', age: 5, gender: 'Female' },
+        { name: 'Vishal', age: 10, gender: 'Male' },
+        { name: 'Avni', age: 7, gender: 'Female' },
+        { name: 'Pranav', age: 8, gender: 'Male' },
+        { name: 'Swati', age: 6, gender: 'Female' },
+        { name: 'Nitin', age: 9, gender: 'Male' }
     ];
 
     let currentChildIndex = 0;
@@ -52,6 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayChild(index) {
         const child = children[index];
         childName.textContent = child.name;
+        if (childPhoto) {
+            // generate a simple placeholder avatar based on the child's name
+            const imgUrl = `https://robohash.org/${encodeURIComponent(child.name)}.png?size=200x200`;
+            childPhoto.src = imgUrl;
+            childPhoto.alt = `${child.name} photo`;
+        }
         childInfo.innerHTML = `<div class="font-body-md">Age: <span class="text-primary">${child.age}</span> years old</div><div class="font-body-md">Gender: <span class="text-primary">${child.gender}</span></div>`;
         childCounter.textContent = `${index + 1} / ${children.length}`;
     }
