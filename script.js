@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const childName = document.getElementById('child-name');
     const childInfo = document.getElementById('child-info');
     const childCounter = document.getElementById('child-counter');
+    const adopterName = document.getElementById('adopter-name');
+    const adopterEmail = document.getElementById('adopter-email');
+    const adopterPhone = document.getElementById('adopter-phone');
     const adoptPrev = document.getElementById('adopt-prev');
     const adoptNext = document.getElementById('adopt-next');
     const adoptConfirm = document.getElementById('adopt-confirm');
@@ -182,6 +185,9 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             currentChildIndex = 0;
             displayChild(currentChildIndex);
+            if (adopterName) adopterName.value = '';
+            if (adopterEmail) adopterEmail.value = '';
+            if (adopterPhone) adopterPhone.value = '';
             adoptModal.classList.remove('hidden');
         });
     });
@@ -203,7 +209,31 @@ document.addEventListener('DOMContentLoaded', () => {
     if (adoptConfirm) {
         adoptConfirm.addEventListener('click', () => {
             const child = children[currentChildIndex];
-            alert(`You've successfully adopted ${child.name}! Welcome to the family.`);
+            const adopterNameValue = adopterName ? adopterName.value.trim() : '';
+            const adopterEmailValue = adopterEmail ? adopterEmail.value.trim() : '';
+            const adopterPhoneValue = adopterPhone ? adopterPhone.value.trim() : '';
+
+            if (!adopterNameValue || !adopterEmailValue) {
+                alert('Please provide your name and email to record the adoption.');
+                return;
+            }
+
+            const record = {
+                childName: child.name,
+                childAge: child.age,
+                childGender: child.gender,
+                adopterName: adopterNameValue,
+                adopterEmail: adopterEmailValue,
+                adopterPhone: adopterPhoneValue,
+                adoptedAt: new Date().toISOString()
+            };
+
+            const storageKey = 'luminaHopeAdoptionRecords';
+            const existingRecords = JSON.parse(localStorage.getItem(storageKey) || '[]');
+            existingRecords.push(record);
+            localStorage.setItem(storageKey, JSON.stringify(existingRecords));
+
+            alert(`Adoption recorded! Thank you, ${adopterNameValue}. ${child.name} has been assigned to you.`);
             adoptModal.classList.add('hidden');
         });
     }
