@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const donateCancel = document.getElementById('donate-cancel');
 
     const adoptModal = document.getElementById('adopt-modal');
-    const childPhoto = document.getElementById('child-photo');
     const childName = document.getElementById('child-name');
     const childInfo = document.getElementById('child-info');
     const childCounter = document.getElementById('child-counter');
@@ -144,12 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayChild(index) {
         const child = children[index];
         childName.textContent = child.name;
-        if (childPhoto) {
-            // generate a simple placeholder avatar based on the child's name
-            const imgUrl = `https://robohash.org/${encodeURIComponent(child.name)}.png?size=200x200`;
-            childPhoto.src = imgUrl;
-            childPhoto.alt = `${child.name} photo`;
-        }
         childInfo.innerHTML = `<div class="font-body-md">Age: <span class="text-primary">${child.age}</span> years old</div><div class="font-body-md">Gender: <span class="text-primary">${child.gender}</span></div>`;
         childCounter.textContent = `${index + 1} / ${children.length}`;
     }
